@@ -1,0 +1,92 @@
+FIFO Queues In Fixed Memory
+------------------------------------------------------------------------------
+
+Solution Requirements
+---------------------
+Your solution should compile and be capable of managing a variable number of
+FIFO byte queues, each with variable length, in a small, fixed amount of
+memory.
+
+You should provide implementations of the five functions within
+QueueManager.cpp.
+
+!! DO NOT MODIFY QueueManager.h !!
+
+You can define additioanl functions within QueueManger.cpp as necessary,
+but do not change the QueueManager interface.
+
+
+Memory Restrictions
+-------------------
+- No memory dynamically allocated during program execution (new, malloc, etc.).
+- All queues must share a single storage space of MAX_DATA_SIZE for their data.
+- You may statically allocate as much additional memory as you choose, but
+  remember that efficiency is important and that any tradeoffs associated
+  with allocating additional storage should be explained.
+- You should statically allocate whatever memory you're going to use within
+  the QueueManager namespace in QueueManager.cpp.
+
+
+Common Cases
+------------
+On average while your system is running, there will be a dozen or so queues
+with an average of 100 or so bytes in each queue. Your functions may be asked
+to create a larger number of queues with fewer bytes in each. Your functions
+may be asked to create a smaller number of queues with more bytes in each.
+There may be spikes in the number of queues allocated, or in the size of an
+individual queue.  The performance of your code in each of these situations
+will be taken into account.  Be sure to explain any tradeoffs you've made to
+handle a given case.
+
+
+Error Handling
+--------------
+If you are unable to satisfy a request due to lack of memory your code should
+call a provided failure function (which will not return):
+
+namespace QueueManager
+{
+  void onOutOfMemory();
+}
+ 
+If the caller makes any illegal request your code should call a provided 
+failure function (which will not return):
+
+namespace QueueManager
+{
+  void onIllegalOperation(const char* fmt = 0, ... );
+}
+
+
+Compilation and Sample Output
+-----------------------------
+Please compile your implementation of QueueManager.cpp against the provided 
+QueueManager.h and main.cpp.
+
+The output of the provided main() should be:
+
+0 1
+2 5
+3 4 6
+
+
+Additional Documentation Requirements
+-------------------------------------
+Please include a description of your implementation.  You should outline areas
+in which you feel your solution could be improved given additional time and/or
+resources.  If you were unable to complete a valid solution in a reasonable
+amount of time (3-4 hours), list the areas you felt gave you the most trouble
+and some thoughts on what you've learned that you would apply to the problem
+on a second pass.  Be sure to include citations for any reference materials
+(including any discussions with other people regarding the problem) you used
+to assist you.
+
+
+Notes
+-----
+People talk, we know you don't exist in a vacuum and friends and
+colleagues can often be an invaluable resource when facing challenging
+problems.  However, be honest with yourself, if you feel you couldn't have
+come close to solving this problem without someone else's help, would you be
+happy working in an environment where you'd be called on to solve even more
+complex problems on a regular basis?
